@@ -67,6 +67,9 @@ public enum Introspect {
         }
         
         for subview in superview.subviews[0..<entryIndex].reversed() {
+            if let typed = subview as? AnyViewType {
+                 return typed
+             }
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
@@ -139,6 +142,9 @@ public enum Introspect {
         }
         
         for subview in superview.subviews[entryIndex..<superview.subviews.endIndex] {
+            if let typed = subview as? AnyViewType {
+                 return typed
+             }
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
